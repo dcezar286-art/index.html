@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feliz Natal, meu amor 🎄</title>
+  <meta name="theme-color" content="#0b1020" />
+
+  <style>
+    :root{
+      --bg:#070b16;
+      --card: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.14);
+      --txt:#f4f6ff;
+      --mut:#cdd6ff;
+      --red:#e84545;
+      --green:#2ecc71;
+      --gold:#f7d774;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh; color:var(--txt);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:
+        radial-gradient(900px 600px at 20% 0%, rgba(46,204,113,.18) 0%, transparent 60%),
+        radial-gradient(900px 600px at 90% 25%, rgba(232,69,69,.18) 0%, transparent 55%),
+        radial-gradient(900px 600px at 60% 100%, rgba(247,215,116,.14) 0%, transparent 60%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+    .wrap{max-width:980px; margin:0 auto; padding:24px; position:relative}
+    .card{
+      margin-top:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      border:1px solid var(--stroke);
+      border-radius:26px;
+      padding:22px;
+      box-shadow:0 22px 70px rgba(0,0,0,.55);
+      backdrop-filter: blur(10px);
+      position:relative;
+    }
+
+    .top{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      margin-bottom:10px;
+    }
+    .badges{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+    .badge{
+      font-size:12px; color:var(--mut);
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.25);
+    }
+
+    h1{
+      margin:10px 0 8px;
+      font-size:clamp(26px,4vw,44px);
+      letter-spacing:.2px;
+    }
+    p{margin:8px 0; color:var(--mut); line-height:1.65}
+
+    .grid{
+      display:grid; grid-template-columns:1fr; gap:14px; margin-top:16px;
+    }
+    @media (min-width:760px){
+      .grid{grid-template-columns:1.05fr .95fr;}
+    }
+
+    .panel{
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.25);
+      border-radius:20px;
+      padding:16px;
+    }
+
+    .titleRow{display:flex; align-items:center; gap:10px; justify-content:space-between; flex-wrap:wrap}
+    .miniTitle{font-weight:800; letter-spacing:.3px}
+    .spark{color:var(--gold)}
+
+    .photos{
+      display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px;
+    }
+    .ph{
+      border-radius:18px; overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      aspect-ratio: 4/5;
+    }
+    .ph img{width:100%; height:100%; object-fit:cover; display:block}
+
+    .code{
+      margin-top:10px;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+      font-size:13px;
+      color:#d8e7ff;
+      background:rgba(0,0,0,.38);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:16px;
+      padding:12px;
+      white-space:pre-wrap;
+    }
+
+    .btns{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    button{
+      cursor:pointer; border:0; border-radius:14px;
+      padding:11px 14px; font-weight:900;
+      color:var(--txt);
+      transition: transform .08s ease, filter .15s ease;
+    }
+    button:active{transform:scale(.98)}
+    .btn-red{background:linear-gradient(180deg, #ff5a5a, var(--red))}
+    .btn-green{background:linear-gradient(180deg, #35f08a, var(--green)); color:#062012}
+    .btn-dark{background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.14)}
+    explain { display:none; }
+
+    .msgBox{
+      margin-top:12px;
+      border:1px dashed rgba(255,255,255,.18);
+      background:rgba(255,255,255,.06);
+      border-radius:18px;
+      padding:14px;
+      display:none;
+    }
+    .msgBox.show{display:block; animation: pop .18s ease-out;}
+    @keyframes pop{from{transform:scale(.98);opacity:.2}to{transform:scale(1);opacity:1}}
+
+    audio{width:100%; margin-top:10px}
+
+    /* Neve (efeito leve) */
+    .snow{position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden}
+    .flake{
+      position:absolute; top:-10px;
+      width:6px; height:6px; border-radius:50%;
+      background:rgba(255,255,255,.8);
+      filter: blur(.2px);
+      opacity:.9;
+      animation: fall linear infinite;
+    }
+    @keyframes fall{
+      to{transform: translateY(110vh);}
+    }
+
+    /* conteúdo acima da neve */
+    .wrap, .card { position:relative; z-index:2; }
+
+    footer{margin:16px 0 6px; text-align:center; color:rgba(255,255,255,.45); font-size:12px}
+    a{color:var(--gold); text-decoration:none}
+  </style>
+</head>
+
+<body>
+  <div class="snow" id="snow"></div>
+
+  <main class="wrap">
+    <div class="top">
+      <div class="badges">
+        <div class="badge">🎄 Presente de Natal</div>
+        <div class="badge">💻 Feito com código e amor</div>
+        <div class="badge" id="dt"></div>
+      </div>
+      <div class="badge">📱 Escaneado da caneca ☕</div>
+    </div>
+
+    <section class="card">
+      <h1>Feliz Natal, meu amor <span class="spark">✨</span></h1>
+      <p>
+        Se você está lendo isso, é porque escaneou o QR Code da sua caneca.
+        Eu quis transformar um presente simples em uma memória nossa — do nosso jeitinho.
+      </p>
+
+      <div class="grid">
+        <div class="panel">
+          <div class="titleRow">
+            <div class="miniTitle">💌 Botões com “respostas”</div>
+            <div class="badge">toque e veja 🥹</div>
+          </div>
+
+          <div class="btns">
+            <button class="btn-red" id="btnNatal">🎁 Feliz Natal</button>
+            <button class="btn-green" id="btnAmor">💖 Eu te amo</button>
+            <button class="btn-dark" id="btnSurpresa">✨ Surpresa</button>
+            <button class="btn-dark" id="btnMusica">▶️ Tocar música</button>
+            <button class="btn-dark" id="btnPausar">⏸️ Pausar</button>
+          </div>
+
+          <div class="msgBox" id="msgBox"></div>
+
+          <div class="code">
+const meuPresente = {
+  caneca: true,
+  qrCode: "abre essa página",
+  objetivo: "fazer você sorrir",
+  amor: Infinity
+};
+
+console.log("Você é minha pessoa favorita. 💖");
+          </div>
+
+          <audio id="musica" controls preload="metadata">
+            <source src="musica.mp3" type="audio/mpeg">
+          </audio>
+
+          <p style="margin-top:10px">
+            <b>Dica:</b> se a música não tocar sozinha, é normal — o celular só toca após um clique.
+          </p>
+        </div>
+
+        <div class="panel">
+          <div class="titleRow">
+            <div class="miniTitle">📸 Nós</div>
+            <div class="badge">as fotos já estão aqui</div>
+          </div>
+
+          <div class="photos">
+            <div class="ph"><img src="foto1.jpg" alt="Nós 1"></div>
+            <div class="ph"><img src="foto2.jpg" alt="Nós 2"></div>
+          </div>
+
+          <p style="margin-top:12px">
+            Quer que eu deixe mais “filme de Natal”? Dá pra colocar: coraçãozinhos, luzinhas piscando e um texto maior.
+          </p>
+        </div>
+      </div>
+
+      <footer>Feito por você, pra ela — em HTML + carinho. 🎄</footer>
+    </section>
+  </main>
+
+  <script>
+    // Data
+    const d = new Date();
+    document.getElementById("dt").textContent =
+      d.toLocaleDateString("pt-BR", { day:"2-digit", month:"long", year:"numeric" });
+
+    // Neve (leve, automática)
+    const snow = document.getElementById("snow");
+    const flakeCount = 45;
+    for(let i=0;i<flakeCount;i++){
+      const f = document.createElement("div");
+      f.className = "flake";
+      const size = 2 + Math.random()*6;
+      f.style.width = size+"px";
+      f.style.height = size+"px";
+      f.style.left = (Math.random()*100)+"vw";
+      f.style.opacity = (0.35 + Math.random()*0.55).toFixed(2);
+      const dur = 6 + Math.random()*10;
+      f.style.animationDuration = dur+"s";
+      f.style.animationDelay = (-Math.random()*dur)+"s";
+      snow.appendChild(f);
+    }
+
+    // Mensagens
+    const msgBox = document.getElementById("msgBox");
+    function showMsg(html){
+      msgBox.innerHTML = html;
+      msgBox.classList.add("show");
+    }
+
+    const audio = document.getElementById("musica");
+
+    document.getElementById("btnNatal").onclick = () => {
+      showMsg(`
+        <h3 style="margin:0 0 6px">🎁 Feliz Natal, meu amor!</h3>
+        <p style="margin:0;color:rgba(255,255,255,.78)">
+          Obrigado por fazer minha vida mais leve. Eu te escolho hoje, amanhã e sempre. 🎄💖
+        </p>
+      `);
+    };
+
+    document.getElementById("btnAmor").onclick = () => {
+      showMsg(`
+        <h3 style="margin:0 0 6px">💖 Eu te amo!</h3>
+        <p style="margin:0;color:rgba(255,255,255,.78)">
+          Você é minha paz, minha alegria e meu lar. Que esse Natal seja só o começo de muitos com você.
+        </p>
+      `);
+    };
+
+    document.getElementById("btnSurpresa").onclick = () => {
+      showMsg(`
+        <h3 style="margin:0 0 6px">✨ Surpresa!</h3>
+        <p style="margin:0;color:rgba(255,255,255,.78)">
+          Missão do dia: me dar um beijo agora mesmo 😌💋
+        </p>
+      `);
+    };
+
+    document.getElementById("btnMusica").onclick = () => {
+      audio.play().catch(()=>{});
+    };
+    document.getElementById("btnPausar").onclick = () => audio.pause();
+  </script>
+</body>
+</html>
