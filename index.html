@@ -145,6 +145,19 @@
 
     footer{margin:16px 0 6px; text-align:center; color:rgba(255,255,255,.45); font-size:12px}
     a{color:var(--gold); text-decoration:none}
+
+    .intro {
+  font-style: italic;
+  font-size: 1.05em;
+  color: #eaeaff;
+}
+.nos-title {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 1.3em;
+  letter-spacing: 1px;
+}
+
+    
   </style>
 </head>
 
@@ -156,29 +169,32 @@
       <div class="badges">
         <div class="badge">🎄 Presente de Natal</div>
         <div class="badge">💻 Feito com código e amor</div>
-        <div class="badge" id="dt"></div>
+    
       </div>
       <div class="badge">📱 Escaneado da caneca ☕</div>
     </div>
 
     <section class="card">
       <h1>Feliz Natal, meu amor <span class="spark">✨</span></h1>
-      <p>
-        Se você está lendo isso, é porque escaneou o QR Code da sua caneca.
-        Eu quis transformar um presente simples em uma memória nossa — do nosso jeitinho.
-      </p>
+      <p class="intro">
+  <em>
+    Esse presente é só uma pequena forma de te lembrar o quanto você é especial pra mim.
+    Cada detalhe aqui carrega um pouco do meu amor, do meu carinho
+    e da felicidade que é caminhar ao seu lado. 💖
+  </em>
+</p>
 
       <div class="grid">
         <div class="panel">
           <div class="titleRow">
-            <div class="miniTitle">💌 Botões com “respostas”</div>
+            <div class="miniTitle">💝 Toque com carinho</div>
             <div class="badge">toque e veja 🥹</div>
           </div>
 
           <div class="btns">
-            <button class="btn-red" id="btnNatal">🎁 Feliz Natal</button>
+            <button class="btn-red" id="btnNatal">🎄 Feliz Natal</button>
             <button class="btn-green" id="btnAmor">💖 Eu te amo</button>
-            <button class="btn-dark" id="btnSurpresa">✨ Surpresa</button>
+            <button class="btn-dark" id="btnSurpresa">✨ Um sorriso pra você</button>
             <button class="btn-dark" id="btnMusica">▶️ Tocar música</button>
             <button class="btn-dark" id="btnPausar">⏸️ Pausar</button>
           </div>
@@ -200,15 +216,10 @@ console.log("Você é minha pessoa favorita. 💖");
             <source src="musica.mp3" type="audio/mpeg">
           </audio>
 
-          <p style="margin-top:10px">
-            <b>Dica:</b> se a música não tocar sozinha, é normal — o celular só toca após um clique.
-          </p>
-        </div>
-
         <div class="panel">
           <div class="titleRow">
-            <div class="miniTitle">📸 Nós</div>
-            <div class="badge">as fotos já estão aqui</div>
+            <div class="miniTitle nos-title">📸 Nós</div>
+          
           </div>
 
           <div class="photos">
@@ -217,20 +228,21 @@ console.log("Você é minha pessoa favorita. 💖");
           </div>
 
           <p style="margin-top:12px">
-            Quer que eu deixe mais “filme de Natal”? Dá pra colocar: coraçãozinhos, luzinhas piscando e um texto maior.
-          </p>
+  Cada foto aqui guarda um momento que mora no meu coração.
+  Olhar pra nós dois assim me lembra o quanto sou grato
+  por dividir a vida com você. 🤍✨
+</p>
         </div>
       </div>
 
-      <footer>Feito por você, pra ela — em HTML + carinho. 🎄</footer>
+      <footer>Que este Natal seja apenas mais um capítulo lindo da nossa história 🎄❤️</footer>
+
     </section>
   </main>
 
   <script>
-    // Data
-    const d = new Date();
-    document.getElementById("dt").textContent =
-      d.toLocaleDateString("pt-BR", { day:"2-digit", month:"long", year:"numeric" });
+
+
 
     // Neve (leve, automática)
     const snow = document.getElementById("snow");
